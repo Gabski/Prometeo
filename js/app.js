@@ -5,6 +5,7 @@ var Prometeo = (function () {
     let currentlyDragging = null;
     let cloneDragging = null;
     const items = [].slice.call(document.querySelectorAll('.item'), 0);
+    const blueprint = document.querySelector('.blueprint');
     var marked = null;
 
     let settings = {
@@ -70,9 +71,9 @@ var Prometeo = (function () {
 
 
     var blox = function () {
+ 
         items.forEach(item => {
-
-            item.ondragenter = item.ondragover = function (ev) {
+            blueprint.ondragenter = blueprint.ondragover = function (ev) {
                 ev.preventDefault();
                 item.classList.add('hovering');
             };
@@ -87,7 +88,7 @@ var Prometeo = (function () {
                 //     e.target.remove();
                 // }
 
-                item.appendChild(cloneDragging);
+                blueprint.appendChild(cloneDragging);
                 item.classList.remove('hovering');
                 currentlyDragging = null;
                 cloneDragging = null;
